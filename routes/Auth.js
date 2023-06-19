@@ -50,7 +50,7 @@ router.post("/login", async (req, res) => {
 
 	const user = await usersCollection.findOne({ username });
 	if (!user) {
-        return res.status(401).json({ error: "Invalid username or password" });
+		return res.status(401).json({ error: "Invalid username or password" });
 	}
     
 	const passwordMatch = await bcrypt.compare(password, user.password);

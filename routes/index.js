@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const itemsRouter = require("./Items");
-const authRouter = require("./auth");
+const authRouter = require("./Auth");
 const bodyParser = require("body-parser");
 
 router.use(bodyParser.json());

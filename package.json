@@ -15,5 +15,9 @@
 		"morgan": "~1.9.1",
 		"nodemon": "^2.0.22",
 		"uuidv4": "^6.2.13"
+	},
+	"devDependencies": {
+		"jest": "^29.5.0",
+		"supertest": "^6.3.3"
 	}
 }
