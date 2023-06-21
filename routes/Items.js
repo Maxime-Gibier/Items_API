@@ -43,6 +43,24 @@ router.get("/", authenticateToken, async (req, res) => {
 	}
 });
 
+router.get("/:id", authenticateToken, async (req, res) => {
+	const itemId = req.params.id;
+	const { itemsCollection } = await connectToMongoDB();
+
+	try {
+		const existingItem = await itemsCollection.findOne({
+			_id: new ObjectId(itemId),
+		});
+		if (!existingItem) {
+			return res.status(404).json({ error: "Item not found" });
+		}
+		res.json(existingItem);
+	} catch (error) {
+		console.error("Error fetching item:", error);
+		res.status(500).json({ error: "Internal server error" });
+	}
+});
+
 router.put("/:id", authenticateToken, async (req, res) => {
 	const itemId = req.params.id;
 	const { name, description } = req.body;
